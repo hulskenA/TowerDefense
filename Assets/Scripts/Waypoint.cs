@@ -4,13 +4,41 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField] bool isStatingWaypoint = false;
+    [SerializeField] bool isEndingWaypoint = false;
+    const int gridSize = 10;
+
+    Vector2Int gridPos;
+
+    public int GetGridSize()
+    {
+        return gridSize;
+    }
+
+    public Vector2Int GetGridPos()
+    {
+        return new Vector2Int(
+            Mathf.RoundToInt(transform.position.x / gridSize) * gridSize,
+            Mathf.RoundToInt(transform.position.z / gridSize) * gridSize
+        );
+    }
+
+    public void SetTopColor(Color myColor)
+    {
+        MeshRenderer topMeshRenderer = transform
+            .Find("Top")
+            .GetComponent<MeshRenderer>();
+
+        topMeshRenderer.material.color = myColor;
+    }
+
+    public bool IsStartingWaypoint()
+    {
+        return isStatingWaypoint;
+    }
+
+    public bool IsEndingWaypoint()
+    {
+        return isEndingWaypoint;
+    }
 }

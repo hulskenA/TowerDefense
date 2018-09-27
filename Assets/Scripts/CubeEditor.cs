@@ -2,23 +2,42 @@
 
 [ExecuteInEditMode]
 [SelectionBase]
+[RequireComponent(typeof(Waypoint))]
 public class CubeEditor : MonoBehaviour {
 
-    [SerializeField][Range(1f, 20f)] float gridSize = 10f;
-
     TextMesh TextMesh;
+    Vector2Int gridPos;
+    Waypoint waypoint;
+
+    private void Awake()
+    {
+        waypoint = GetComponent<Waypoint>();
+    }
 
     // Update is called once per frame
-    void Update () {
-        Vector3 snapPos;
-        snapPos.x = Mathf.RoundToInt(transform.position.x / gridSize) * gridSize;
-        snapPos.z = Mathf.RoundToInt(transform.position.z / gridSize) * gridSize;
-        transform.position = new Vector3(snapPos.x, 0f, snapPos.z);
+    void Update ()
+    {
+        gridPos = waypoint.GetGridPos();
+        SnapToGrid();
+        UpdateLabel();
+    }
 
+    private void SnapToGrid()
+    {
+        int gridSize = waypoint.GetGridSize();
+        transform.position = new Vector3(
+            gridPos.x,
+            0f,
+            gridPos.y
+        );
+    }
+
+    private void UpdateLabel()
+    {
+        int gridSize = waypoint.GetGridSize();
         TextMesh = GetComponentInChildren<TextMesh>();
-        string blockLabel = snapPos.x / gridSize + "," + snapPos.z / gridSize;
+        string blockLabel = gridPos.x / gridSize + "," + gridPos.y / gridSize;
         TextMesh.text = blockLabel;
         gameObject.name = blockLabel;
-	}
-
+    }
 }
