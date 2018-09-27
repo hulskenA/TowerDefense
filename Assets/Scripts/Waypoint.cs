@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Waypoint : MonoBehaviour {
-
-    [SerializeField] bool isStatingWaypoint = false;
-    [SerializeField] bool isEndingWaypoint = false;
+    
     const int gridSize = 10;
+
+    public bool isExplored = false;
+    public Waypoint exploredFrom;
 
     Vector2Int gridPos;
 
@@ -18,8 +19,8 @@ public class Waypoint : MonoBehaviour {
     public Vector2Int GetGridPos()
     {
         return new Vector2Int(
-            Mathf.RoundToInt(transform.position.x / gridSize) * gridSize,
-            Mathf.RoundToInt(transform.position.z / gridSize) * gridSize
+            Mathf.RoundToInt(transform.position.x / gridSize),
+            Mathf.RoundToInt(transform.position.z / gridSize)
         );
     }
 
@@ -30,15 +31,5 @@ public class Waypoint : MonoBehaviour {
             .GetComponent<MeshRenderer>();
 
         topMeshRenderer.material.color = myColor;
-    }
-
-    public bool IsStartingWaypoint()
-    {
-        return isStatingWaypoint;
-    }
-
-    public bool IsEndingWaypoint()
-    {
-        return isEndingWaypoint;
     }
 }
