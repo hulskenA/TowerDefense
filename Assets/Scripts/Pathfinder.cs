@@ -6,7 +6,6 @@ using UnityEngine;
 public class Pathfinder : MonoBehaviour {
 
     [SerializeField] Waypoint startingWaypoint, endingWaypoint;
-    [SerializeField] Color startingWaypointColor, endingWaypointColor;
 
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
     Vector2Int[] directions =
@@ -25,11 +24,19 @@ public class Pathfinder : MonoBehaviour {
 
     public Stack<Waypoint> GetPath()
     {
+        if (pathStack.Count == 0)
+        {
+            CalculatePath();
+        }
+
+        return pathStack;
+    }
+
+    private void CalculatePath()
+    {
         LoadBlocks();
-        ColorStartingAndEndingWaypoints();
         BreadthFirstSearch();
         CreatePath();
-        return pathStack;
     }
 
     private void CreatePath()
@@ -87,12 +94,6 @@ public class Pathfinder : MonoBehaviour {
             queue.Enqueue(neighbour);
             neighbour.exploredFrom = searchCenter;
         }
-    }
-
-    private void ColorStartingAndEndingWaypoints()
-    {
-        startingWaypoint.SetTopColor(startingWaypointColor);
-        endingWaypoint.SetTopColor(endingWaypointColor);
     }
 
     private void LoadBlocks()

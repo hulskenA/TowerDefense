@@ -19,10 +19,14 @@ public class EnemyMovement : MonoBehaviour {
         {
             transform.position = waypoint.transform.position;
             print("Visiting : " + waypoint);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
 
         print("Ending patrol");
     }
-    
+
+    private void OnParticleCollision(GameObject other)
+    {
+        
+    }
 }
