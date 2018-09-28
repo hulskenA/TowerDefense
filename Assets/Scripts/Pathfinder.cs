@@ -16,25 +16,40 @@ public class Pathfinder : MonoBehaviour {
         Vector2Int.down,
         Vector2Int.left
     };
-    Queue<Waypoint> path = new Queue<Waypoint>();
+    Queue<Waypoint> queue = new Queue<Waypoint>();
+    Stack<Waypoint> pathStack = new Stack<Waypoint>();
     bool isRunning = true;
 
     Waypoint searchCenter;
 
-    // Use this for initialization
-    void Start () {
+
+    public Stack<Waypoint> GetPath()
+    {
         LoadBlocks();
         ColorStartingAndEndingWaypoints();
-        Pathfind();
-	}
+        BreadthFirstSearch();
+        CreatePath();
+        return pathStack;
+    }
 
-    private void Pathfind()
+    private void CreatePath()
     {
-        path.Enqueue(startingWaypoint);
-
-        while (path.Count > 0 && isRunning)
+        Waypoint pivot = endingWaypoint;
+        while (pivot != null)
         {
-            searchCenter = path.Dequeue();
+            pathStack.Push(pivot);
+            pivot = pivot.exploredFrom;
+        }
+        
+    }
+
+    private void BreadthFirstSearch()
+    {
+        queue.Enqueue(startingWaypoint);
+
+        while (queue.Count > 0 && isRunning)
+        {
+            searchCenter = queue.Dequeue();
             HaltIfEndFind();
             ExploreNeighbours();
             searchCenter.isExplored = true;
@@ -68,10 +83,9 @@ public class Pathfinder : MonoBehaviour {
     {
         Waypoint neighbour = grid[neighbourPos];
 
-        if(!neighbour.isExplored && !path.Contains(neighbour))
+        if(!neighbour.isExplored && !queue.Contains(neighbour))
         {
-            neighbour.SetTopColor(Color.yellow);
-            path.Enqueue(neighbour);
+            queue.Enqueue(neighbour);
             neighbour.exploredFrom = searchCenter;
         }
     }
@@ -98,7 +112,5 @@ public class Pathfinder : MonoBehaviour {
                 Debug.Log("Skipping overlapping block " + waypoint);
             }
         }
-
-        print("Loaded " + grid.Count + " blocks");
     }
 }
