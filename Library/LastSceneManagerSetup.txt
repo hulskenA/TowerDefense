@@ -1,4 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Sandbox.unity
+- path: C:/Users/Megaport/Desktop/learn_unity/4_Argon_Assault/Assets/Scenes/level
+    1.unity
   isLoaded: 1
   isActive: 1

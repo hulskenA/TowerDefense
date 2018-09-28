@@ -71,11 +71,10 @@ public class Pathfinder : MonoBehaviour {
             if (!isRunning) { return; }
 
             Vector2Int neighbourPos = searchCenter.GetGridPos() + direction;
-            try
+            if (grid.ContainsKey(neighbourPos))
             {
                 QueueNewNeighbours(neighbourPos);
             }
-            catch { }
         }
     }
 
