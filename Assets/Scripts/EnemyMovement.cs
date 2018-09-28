@@ -13,16 +13,11 @@ public class EnemyMovement : MonoBehaviour {
 
     private IEnumerator FollowPath(Stack<Waypoint> pathToFollow)
     {
-        print("Starting patrol...");
-
         foreach (Waypoint waypoint in pathToFollow)
         {
             transform.position = waypoint.transform.position;
-            print("Visiting : " + waypoint);
             yield return new WaitForSeconds(2f);
         }
-
-        print("Ending patrol");
     }
 
     private void OnParticleCollision(GameObject other)

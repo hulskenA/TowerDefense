@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 4757295461767444}
   - component: {fileID: 114561157318969814}
   - component: {fileID: 114145755089945124}
+  - component: {fileID: 114678176020599222}
+  - component: {fileID: 65025098489930322}
   m_Layer: 0
   m_Name: neutral
   m_TagString: Untagged
@@ -127,7 +129,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1037126257959932}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30, y: 0, z: 50}
+  m_LocalPosition: {x: 40, y: 0, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4320917834718380}
@@ -265,6 +267,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65025098489930322
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037126257959932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: -5, z: 0}
 --- !u!102 &102506147710095254
 TextMesh:
   serializedVersion: 3
@@ -272,7 +286,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1012307722947790}
-  m_Text: 3,5
+  m_Text: 4,2
   m_OffsetZ: 0
   m_CharacterSize: 2
   m_LineSpacing: 1
@@ -308,5 +322,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3e2f01427b2bc347bbd9ce8c4366317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114678176020599222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037126257959932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbd66148c914d145b9517d86d785be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
