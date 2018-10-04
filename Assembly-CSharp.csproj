@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Pathfinder.cs" />
     <Compile Include="Assets\Scripts\Tower.cs" />
     <Compile Include="Assets\Scripts\TowerCube.cs" />
+    <Compile Include="Assets\Scripts\TowerFactory.cs" />
     <Compile Include="Assets\Scripts\Waypoint.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Megaport/Desktop/learn_unity/5_Realm_Rush/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
