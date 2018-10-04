@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
-    
+
+    [SerializeField] float movementPeriod = 1f;
+
     // Use this for initialization
     void Start () {
         Pathfinder pathfinder = FindObjectOfType<Pathfinder>();
@@ -16,12 +18,8 @@ public class EnemyMovement : MonoBehaviour {
         foreach (Waypoint waypoint in pathToFollow)
         {
             transform.position = waypoint.transform.position;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(movementPeriod);
         }
     }
 
-    private void OnParticleCollision(GameObject other)
-    {
-        
-    }
 }

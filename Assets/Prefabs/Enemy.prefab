@@ -404,7 +404,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMesh: {fileID: 65598544800772234}
   hitPoints: 10
-  deathFXParentTransform: {fileID: 0}
   hitParticlePrefab: {fileID: 198169548416433544}
   deathParticlePrefab: {fileID: 198537984209914932, guid: 1a51bfda454239a41afb7dee687c6ac0,
     type: 2}
@@ -419,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97db2664404145544b05532eb968e6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementPeriod: 1
 --- !u!198 &198051237521758964
 ParticleSystem:
   m_ObjectHideFlags: 1

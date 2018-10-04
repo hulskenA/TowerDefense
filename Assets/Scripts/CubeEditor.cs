@@ -39,4 +39,5 @@ public class CubeEditor : MonoBehaviour {
         TextMesh.text = blockLabel;
         gameObject.name = blockLabel;
     }
+
 }
