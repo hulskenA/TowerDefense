@@ -30,8 +30,10 @@ public class EnemyMovement : MonoBehaviour {
     {
         ParticleSystem goalReachedParticlesFX = Instantiate(goalReachedParticlePrefab, transform.position, Quaternion.identity);
         float goalReachedParticlesFXDuration = goalReachedParticlesFX.main.duration;
+        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
 
         goalReachedParticlesFX.Play();
+        playerHealth.HitPlayer();
 
         Destroy(goalReachedParticlesFX.gameObject, goalReachedParticlesFXDuration);
         Destroy(gameObject);
