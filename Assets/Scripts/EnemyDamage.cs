@@ -9,11 +9,6 @@ public class EnemyDamage : MonoBehaviour {
     [SerializeField] ParticleSystem hitParticlePrefab;
     [SerializeField] ParticleSystem deathParticlePrefab;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-
     private void OnParticleCollision(GameObject other)
     {
         ProcessHit();
@@ -31,9 +26,13 @@ public class EnemyDamage : MonoBehaviour {
 
     private void KillEnemy()
     {
-        var deathParticlesFX = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        ParticleSystem deathParticlesFX = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
+        float deathParticlesFXDuration = deathParticlesFX.main.duration;
+
         deathParticlesFX.Play();
+
+        Destroy(deathParticlesFX.gameObject, deathParticlesFXDuration);
+        Destroy(gameObject);
     }
 
 }
