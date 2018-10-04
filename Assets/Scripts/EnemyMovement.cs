@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour {
 
     [SerializeField] ParticleSystem goalReachedParticlePrefab;
+    [SerializeField] AudioClip goalReachedEnemySFX;
     [SerializeField] float movementPeriod = 1f;
 
     // Use this for initialization
@@ -32,6 +33,7 @@ public class EnemyMovement : MonoBehaviour {
         float goalReachedParticlesFXDuration = goalReachedParticlesFX.main.duration;
         PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
 
+        GetComponent<AudioSource>().PlayOneShot(goalReachedEnemySFX);
         goalReachedParticlesFX.Play();
         playerHealth.HitPlayer();
 
